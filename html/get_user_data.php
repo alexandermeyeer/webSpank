@@ -24,6 +24,7 @@ if($_POST){
 
 		if($queryUser)
 		{
+			$_SESSION['username'] = $user;
 			echo "yass";
 		}
 		else

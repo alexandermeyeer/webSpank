@@ -1,5 +1,10 @@
 
- 
+ <?php
+ session_start();
+	if(!isset($_SESSION['username'])){
+   header("Location:index.php");
+}
+?>
 <table width="90%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
 <tr>
 <td width="6%" align="center" bgcolor="#E6E6E6"><strong>#</strong></td>
