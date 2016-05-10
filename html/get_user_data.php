@@ -12,21 +12,8 @@ if($_POST){
 
 	$user=$_POST['username'];
 	$pass=$_POST['password'];
+	
 
-	$data = array(
-		"username" => $user,
-		"password" => $pass,
-        );
-	$queryToTest = $db->query("SELECT * FROM Users WHERE username = '" . $user . "'");
 
-	if($queryToTest)
-	{
-		echo "notok";
-	}
-	else
-	{
-	$db->insert('Users',$data);
-	echo "ok";
-	}
-}
-?>
+
+

@@ -68,4 +68,69 @@
          </style>
 	</head>
 
+	<body>
+
+		<h2>Enter your credentials and start making millions today!</h2>
+		
+
+	</body>
+
+		  <div class = "container">
+
+         <form id="signup" class = "form-signin" role = "form"
+            action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);
+            ?>" method = "post">
+            <h4 class = "form-signin-heading"><?php echo $msg; ?></h4>
+            <input id="uname" type = "text" class = "form-control"
+               name = "username" placeholder = "Enter your username"
+               required autofocus></br>
+            <input id="pword" type = "password" class = "form-control"
+               name = "password" placeholder = "Enter your password" required>
+            <input id="rpword" type="password" class="form-control" placeholder="Re-enter your password">
+            <button class = "btn btn-lg btn-primary btn-block" type = "submit"
+               name = "login">Create</button>
+            
+         </form>
+	</div>
+
+		<script>
+         $( document ).ready(function() {
+
+         $("#signup").submit(
+            function saveDB(e){
+            	if($("#pword").val()==$("#rpword").val())
+            	{
+               e.preventDefault();
+               var postData =
+               {
+                  username : $("#uname").val(),
+                  password : $("#pword").val(),
+                  
+               };
+        /* var posting = $.post("/save_user_info.php", postData); */
+
+        	$.ajax({
+                type: "POST",
+                url: "/save_user_info.php",
+                data: postData,
+                success: function(data){
+                    if(data=="ok")
+                    	window.location.href="/index.php";
+                    else
+                    	alert("Username already existing in the database, try something else");
+                }
+            });
+
+         
+     }
+      
+         
+      }
+
+      );
+   /* */
+
+});
+      </script>
+
 	

@@ -124,28 +124,6 @@
 
       </div>
 
-      <script>
-         $( document ).ready(function() {
-
-         $("#signup").submit(
-            function saveDB(e){
-               e.preventDefault();
-               var postData =
-               {
-                  name : $("#uname").val(),
-                  email : $("#pword").val(),
-                  
-               };
-         var posting = $.post("save_user_info.php", postData); 
       
-         
-      }
-
-      );
-   /* */
-
-});
-      </script>
-
    </body>
 </html>
