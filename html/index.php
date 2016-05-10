@@ -146,7 +146,7 @@
                 data: postData,
                 success: function(data){
                     if(data=="yass")
-                        alert("Good job raul");
+                        window.location.href="/main.php";
                     else
                      alert(data);
                 }
