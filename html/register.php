@@ -102,23 +102,25 @@ $( document ).ready(function() {
      {
         var email = $("#uname").val();
                 //if it is an email
-                if (validateForm(email)){
+                if (validateForm(email))
+                {
 
                     e.preventDefault();
 
                     var postData =
                     {
                       username : email,
-                      password : $("#pword").val(),
-                      
-                  };
-              }
+                      password : $("#pword").val(),     
+                    }
+                }
                 //if its not email
                 else{
                     alert("email field MUST contain a valid email address!");
                 }
-           //Do something if passwords don't match
-           else{
+        }
+        //Do something if passwords don't match
+       else
+       {
             alert("The passwords you entered do not match. so sorry");
         }
         /* var posting = $.post("/save_user_info.php", postData); */
