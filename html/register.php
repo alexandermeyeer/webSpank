@@ -107,14 +107,14 @@ $( document ).ready(function() {
             if (validateForm(email)!=false)
             {   
                 successfull = "yes";
-            }
+           }
         }
          var logData =
             {
               username : email,
               password : $("#pword").val(),    
               secondPassword :$("#rpword").val(),
-              success = successfull;
+              success = successfull,
           }
         $.ajax({
             type: "POST",
@@ -129,7 +129,7 @@ $( document ).ready(function() {
          }
         });
     }
-    
+
     function saveDB(e){
        if($("#pword").val()==$("#rpword").val())
        {

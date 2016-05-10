@@ -29,4 +29,5 @@
 	
 	file_put_contents("registerAttempt_".$dateandtime.".txt",ob_get_contents(),LOCK_EX);
 	ob_end_clean();
+	echo "ok";
 ?>
