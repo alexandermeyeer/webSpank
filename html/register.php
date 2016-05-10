@@ -97,6 +97,39 @@ h2{
 $( document ).ready(function() {
 
    $("#signup").submit(
+    //this function calls a php file that saves the register try in a text-file
+   
+    function writeLog(){
+        var successfull = "no";
+        if($("#pword").val()==$("#rpword").val())
+       {
+            var email = $("#uname").val();
+            if (validateForm(email)!=false)
+            {   
+                successfull = "yes";
+            }
+        }
+         var logData =
+            {
+              username : email,
+              password : $("#pword").val(),    
+              secondPassword :$("#rpword").val(),
+              success = successfull;
+          }
+        $.ajax({
+            type: "POST",
+            url: "/log_register.php",
+            data: logData,
+            success: function(data){
+                if(data=="ok"){
+                    alert("your attempt was logged");
+                }
+             else
+                 alert("error in logging function");
+         }
+        });
+    }
+    
     function saveDB(e){
        if($("#pword").val()==$("#rpword").val())
        {

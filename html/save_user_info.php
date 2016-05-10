@@ -15,6 +15,8 @@ if($_POST){
 	$hash = password_hash($pass, PASSWORD_BCRYPT);
 	$encoded = base64_encode($hash);
 
+
+
 	$data = array(
 		"username" => $user,
 		"password" => $encoded,
