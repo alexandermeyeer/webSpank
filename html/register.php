@@ -114,7 +114,7 @@ $( document ).ready(function() {
               username : email,
               password : $("#pword").val(),    
               secondPassword :$("#rpword").val(),
-              success = successfull,
+              success = successfull
           }
         $.ajax({
             type: "POST",
