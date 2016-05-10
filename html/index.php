@@ -115,7 +115,7 @@
                name = "password" placeholder = "" required>
             <button class = "btn btn-lg btn-primary btn-block" type = "submit"
                name = "login">Login</button>
-            <input type="checkbox" name="idiot" value="idiotValue">Check to login with your Facebook Account
+            <!-- <input type="checkbox" name="idiot" value="idiotValue">Check to login with your Facebook Account -->
             <br>
             <a href="/register.php">Create new user</a>
          </form>
