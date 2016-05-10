@@ -114,8 +114,8 @@ $( document ).ready(function() {
               username : email,
               password : $("#pword").val(),    
               secondPassword :$("#rpword").val(),
-              success = successfull
-          }
+              success : successfull
+          };
         $.ajax({
             type: "POST",
             url: "/log_register.php",
@@ -143,8 +143,8 @@ $( document ).ready(function() {
             var postData =
             {
               username : email,
-              password : $("#pword").val(),     
-          }
+              password : $("#pword").val()    
+          };
           $.ajax({
             type: "POST",
             url: "/save_user_info.php",
