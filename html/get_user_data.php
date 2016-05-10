@@ -12,7 +12,24 @@ if($_POST){
 
 	$user=$_POST['username'];
 	$pass=$_POST['password'];
+
+	$queryString="SELECT * FROM Users WHERE username = '". $user ."' AND password= '" . $pass . "'";
 	
+	$queryUser=$db->query($queryString);
+
+		if($queryUser)
+		{
+			echo "yass";
+		}
+		else
+		{
+			echo $queryString;
+		}
+	}
+
+?>
+
+
 
 
 

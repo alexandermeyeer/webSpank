@@ -126,7 +126,7 @@
 
       <script>
 
-            <script>
+            
          $( document ).ready(function() {
 
          $("#signup").submit(
@@ -148,7 +148,7 @@
                     if(data=="yass")
                         alert("Good job raul");
                     else
-                     alert("username or password wrong");
+                     alert(data);
                 }
             });
       
