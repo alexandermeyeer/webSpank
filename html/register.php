@@ -117,6 +117,7 @@ $( document ).ready(function() {
                 else{
                     alert("email field MUST contain a valid email address!");
                 }
+              }
            //Do something if passwords don't match
            else{
             alert("The passwords you entered do not match. so sorry");
