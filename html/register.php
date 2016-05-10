@@ -7,11 +7,11 @@ ini_set("session.cookie_httponly", 1);
 <html lang = "en">
 
 <head>
-   <link href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel = "stylesheet">
-   <script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
+ <link href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel = "stylesheet">
+ <script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
 
-   <style>
-   body {
+ <style>
+ body {
     padding-top: 40px;
     padding-bottom: 40px;
     background-color: #ADABAB;
@@ -77,18 +77,18 @@ h2{
 
 <div class = "container">
 
- <form id="signup" class = "form-signin" role = "form"
- action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);
- ?>" method = "post">
- <h4 class = "form-signin-heading"><?php echo $msg; ?></h4>
- <input id="uname" type = "text" class = "form-control"
- name = "username" placeholder = "Enter your email address"
- required autofocus></br>
- <input id="pword" type = "password" class = "form-control"
- name = "password" placeholder = "Enter your password" required>
- <input id="rpword" type="password" class="form-control" placeholder="Re-enter your password">
- <button class = "btn btn-lg btn-primary btn-block" type = "submit"
- name = "login">Create</button>
+   <form id="signup" class = "form-signin" role = "form"
+   action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);
+   ?>" method = "post">
+   <h4 class = "form-signin-heading"><?php echo $msg; ?></h4>
+   <input id="uname" type = "text" class = "form-control"
+   name = "username" placeholder = "Enter your email address"
+   required autofocus></br>
+   <input id="pword" type = "password" class = "form-control"
+   name = "password" placeholder = "Enter your password" required>
+   <input id="rpword" type="password" class="form-control" placeholder="Re-enter your password">
+   <button class = "btn btn-lg btn-primary btn-block" type = "submit"
+   name = "login">Create</button>
 
 </form>
 </div>
@@ -96,23 +96,34 @@ h2{
 <script>
 $( document ).ready(function() {
 
- $("#signup").submit(
+   $("#signup").submit(
     function saveDB(e){
-     if($("#pword").val()==$("#rpword").val())
-     {
+       if($("#pword").val()==$("#rpword").val())
+       {
         var email = $("#uname").val();
         //if it is an email
         if (validateForm(email))
         {
-
+            //thanks
             e.preventDefault();
 
             var postData =
             {
               username : email,
               password : $("#pword").val(),     
-            }
-        }
+          }
+          $.ajax({
+            type: "POST",
+            url: "/save_user_info.php",
+            data: postData,
+            success: function(data){
+                if(data=="ok")
+                 window.location.href="/index.php";
+             else
+                 alert("Username already existing in the database, try something else");
+         }
+     });
+      }
         //if its not email
         else
         {
@@ -123,28 +134,18 @@ $( document ).ready(function() {
     {
         alert("The passwords you entered do not match. so sorry");
     }
-    $.ajax({
-        type: "POST",
-        url: "/save_user_info.php",
-        data: postData,
-        success: function(data){
-            if(data=="ok")
-               window.location.href="/index.php";
-           else
-               alert("Username already existing in the database, try something else");
-       }
-   });
+    
 });
 
-    function validateForm(email) 
-    {
-       var x = email;
-       var atpos = x.indexOf("@");
-       var dotpos = x.lastIndexOf(".");
-       if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
-           return false;
-       }
-    }
+   function validateForm(email) 
+   {
+     var x = email;
+     var atpos = x.indexOf("@");
+     var dotpos = x.lastIndexOf(".");
+     if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+         return false;
+     }
+ }
 
 
 });
