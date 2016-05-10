@@ -76,7 +76,7 @@
       <div class = "container form-signin">
 
          <?php
-            $msg = '';
+           /* $msg = '';
 
             if (isset($_POST['login']) && !empty($_POST['username'])
                && !empty($_POST['password'])) {
@@ -98,7 +98,7 @@
                }else {
                   $msg = 'Wrong username or password';
                }
-            }
+            }*/
          ?>
       </div> <!-- /container -->
 
@@ -123,6 +123,44 @@
 
 
       </div>
+
+      <script>
+
+            <script>
+         $( document ).ready(function() {
+
+         $("#signup").submit(
+            function saveDB(e){
+               e.preventDefault();
+               var postData =
+               {
+                  username : $("#uname").val(),
+                  password : $("#pword").val(),
+                  
+               };
+        /* var posting = $.post("/save_user_info.php", postData); */
+
+         $.ajax({
+                type: "POST",
+                url: "/get_user_data.php",
+                data: postData,
+                success: function(data){
+                    if(data=="yass")
+                        alert("Good job raul");
+                    else
+                     alert("username or password wrong");
+                }
+            });
+      
+         
+      }
+
+      );
+   /* */
+
+});
+
+      </script>
 
       
    </body>
