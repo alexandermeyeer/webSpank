@@ -102,7 +102,7 @@ $( document ).ready(function() {
        {
         var email = $("#uname").val();
         //if it is an email
-        if (validateForm(email))
+        if (validateForm(email)!=false)
         {
             //thanks
             e.preventDefault();
