@@ -12,7 +12,8 @@ if($_POST){
 
 	$user=$_POST['username'];
 	$pass=$_POST['password'];
-
+	$hash = password_hash($pass, PASSWORD_BCRYPT);
+	
 	$data = array(
 		"username" => $user,
 		"password" => $pass,
