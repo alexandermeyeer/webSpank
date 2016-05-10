@@ -16,7 +16,7 @@ if($_POST){
 
 	$data = array(
 		"username" => $user,
-		"password" => $hash,
+		"password" => base64_encode($hash),
         );
 	$queryToTest = $db->query("SELECT * FROM Users WHERE username = '" . $user . "'");
 

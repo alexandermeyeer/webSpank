@@ -13,7 +13,12 @@ if($_POST){
 	$user=$_POST['username'];
 	$pass=$_POST['password'];
 
-	$queryString="SELECT * FROM Users WHERE username = '". $user ."' AND password= '" . $pass . "'";
+	$hash = password_hash($pass, PASSWORD_BCRYPT);
+	$encoded = base64_encode($hash);
+
+
+
+	$queryString="SELECT * FROM Users WHERE username = '". $user ."' AND password= '" . $encoded . "'";
 	
 	$queryUser=$db->query($queryString);
 
