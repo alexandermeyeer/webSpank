@@ -12,10 +12,11 @@ if($_POST){
 
 	$user=$_POST['username'];
 	$pass=$_POST['password'];
+	$hash = password_hash($pass, PASSWORD_BCRYPT);
 
 	$data = array(
 		"username" => $user,
-		"password" => $pass,
+		"password" => $hash,
         );
 	$queryToTest = $db->query("SELECT * FROM Users WHERE username = '" . $user . "'");
 
