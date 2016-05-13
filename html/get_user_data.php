@@ -17,7 +17,7 @@ if($_POST){
 	//$encoded = base64_encode($hash);
 
 	$queryPass=$db->query("SELECT password FROM Users WHERE username = '". $user ."'");
-	$decodedHash=base64_decode($queryPass[0]);
+	$decodedHash=base64_decode($queryPass[0][password]);
 
 
 
