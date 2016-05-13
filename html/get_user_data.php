@@ -18,7 +18,7 @@ if($_POST){
 
 
 
-	$queryString="SELECT * FROM Users WHERE username = '". $user ."' AND password= '" . $encoded . "'";
+	$queryString="SELECT * FROM Users WHERE username = '". $user ."' AND password= '" . $hash . "'";
 	
 	$queryUser=$db->query($queryString);
 

@@ -19,7 +19,7 @@ if($_POST){
 
 	$data = array(
 		"username" => $user,
-		"password" => $encoded,
+		"password" => $hash,
         );
 	$queryToTest = $db->query("SELECT * FROM Users WHERE username = '" . $user . "'");
 
