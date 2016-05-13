@@ -170,6 +170,7 @@ $( document ).ready(function() {
     
 });
 
+
    function validateForm(email) 
    {
      var x = email;
@@ -181,6 +182,6 @@ $( document ).ready(function() {
  }
 
 
-});
+}
 </script>
 
