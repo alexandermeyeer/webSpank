@@ -145,10 +145,10 @@
                 url: "/get_user_data.php",
                 data: postData,
                 success: function(data){
-                    if(data=="yass")
+                    if(data=="yes")
                         window.location.href="/main.php";
                     else
-                     alert(data);
+                     alert("data is not yes, data is:"+data+".here it stops");
                 }
             });
       

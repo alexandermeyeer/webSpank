@@ -1,10 +1,12 @@
 
  <?php
  session_start();
-	if(!isset($_SESSION['username'])){
+if(!isset($_SESSION['username'])){
    header("Location:index.php");
 }
 ?>
+ <script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
+
 <table width="90%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
 <tr>
 <td width="6%" align="center" bgcolor="#E6E6E6"><strong>#</strong></td>
@@ -37,3 +39,29 @@ mysql_close();
 <td colspan="5" align="right" bgcolor="#E6E6E6"><a href="new_topic.php"><strong>Create New Topic</strong> </a></td>
 </tr>
 </table>
+<a onclick='logout()'>Log Out</a>
+
+<script>
+
+	var postdata={
+		bla:"bla"
+	};
+	
+	function logout()
+	{
+		 $.ajax({
+                type: "POST",
+                url: "/logout_users.php",
+                data:"bla",
+                success: function(data){
+                    if(data=="logged out"){
+                        window.location.href="/index.php";
+                    }
+
+                    else
+                    	alert("data is :"+data+".over");
+                }
+            });
+	}
+
+</script>

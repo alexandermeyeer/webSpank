@@ -2,6 +2,7 @@
 ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
 error_reporting(-1);
+session_start();
 
 if($_POST){
 
@@ -18,7 +19,8 @@ if($_POST){
 
 	$queryPass=$db->query("SELECT password FROM Users WHERE username = '". $user ."'");
 	$decodedHash=base64_decode($queryPass[0]['password']);
-
+	$dataYes="yes";
+	$dataNo="no";
 
 
 
@@ -28,20 +30,15 @@ if($_POST){
 
 		if(password_verify($pass,$decodedHash))
 		{
+			echo $dataYes;
 			$_SESSION['username'] = $user;
-			echo "yass";
 		}
 		else
 		{
-			print_r($queryPass);
-			echo password_verify($pass,$decodedHash);
+			echo $dataNo;
+
+			
 		}
 	}
 
 ?>
-
-
-
-
-
-
