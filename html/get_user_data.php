@@ -34,6 +34,7 @@ if($_POST){
 		else
 		{
 			print_r($queryPass);
+			echo password_verify($pass,$decodedHash);
 		}
 	}
 
