@@ -99,7 +99,7 @@ $( document ).ready(function() {
    $("#signup").submit(
     //this function calls a php file that saves the register try in a text-file
    
-    function writeLog(){
+/*    function writeLog(){
         var successfull = "no";
         if($("#pword").val()==$("#rpword").val())
        {
@@ -128,7 +128,7 @@ $( document ).ready(function() {
                  alert("error in logging function");
          }
         });
-    }
+    }*/
 
     function saveDB(e){
        if($("#pword").val()==$("#rpword").val())
@@ -170,7 +170,6 @@ $( document ).ready(function() {
     
 });
 
-
    function validateForm(email) 
    {
      var x = email;
@@ -182,6 +181,6 @@ $( document ).ready(function() {
  }
 
 
-}
+});
 </script>
 
