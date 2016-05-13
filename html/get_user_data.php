@@ -13,23 +13,27 @@ if($_POST){
 	$user=$_POST['username'];
 	$pass=$_POST['password'];
 
-	$hash = password_hash($pass, PASSWORD_BCRYPT);
-	$encoded = base64_encode($hash);
+	/*$hash = password_hash($pass, PASSWORD_BCRYPT);*/
+	//$encoded = base64_encode($hash);
+
+	$queryPass=$db->query("SELECT password FROM Users WHERE username = '". $user ."'");
+	$decodedHash=base64_decode($queryPass);
 
 
 
-	$queryString="SELECT * FROM Users WHERE username = '". $user ."' AND password= '" . $hash . "'";
+
+	// $queryString="SELECT * FROM Users WHERE username = '". $user ."' AND password= '" . $hash . "'";
 	
-	$queryUser=$db->query($queryString);
+	// $queryUser=$db->query($queryString);
 
-		if($queryUser)
+		if(password_verify($pass,$decodedHash))
 		{
 			$_SESSION['username'] = $user;
 			echo "yass";
 		}
 		else
 		{
-			echo $queryString;
+			echo "query pass: ".$queryPass;
 		}
 	}
 
