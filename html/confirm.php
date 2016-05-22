@@ -2,7 +2,7 @@
 
 require_once ('MySQLi.php');
 
-$db = new MysqliDb ('localhost', 'root', '', 'mydb');
+$db = new MysqliDb ('localhost', 'root', 'azimamilancheesetopsvespa', 'mydb');
 
 //setup some variables
 $action = array();
@@ -50,7 +50,7 @@ if($action['result'] != 'error'){
 		
 		}
 
-		header( "Location:http://localhost/index.php" );	
+		header( "Location:http://46.101.98.185/index.php" );	
 
 		
 	

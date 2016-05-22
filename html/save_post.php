@@ -6,7 +6,7 @@ session_start();
 if($_POST){
 	require_once ('MySQLi.php');
 
-	$db = new MysqliDb ('localhost', 'root', 'root', 'mydb');
+	$db = new MysqliDb ('localhost', 'root', 'azimamilancheesetopsvespa', 'mydb');
 
 	$post=$_POST['post'];
 	// $username = $_POST['username'];

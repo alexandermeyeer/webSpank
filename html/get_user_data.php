@@ -9,7 +9,7 @@ if($_POST){
 
 	require_once ('MySQLi.php');
 
-	$db = new MysqliDb ('localhost', 'root', '', 'mydb');
+	$db = new MysqliDb ('localhost', 'root', 'azimamilancheesetopsvespa', 'mydb');
 
 	$user=$_POST['username'];
 	$pass=$_POST['password'];
@@ -31,7 +31,7 @@ if($_POST){
 		
 		$decodedHash=base64_decode($queryPass[0]['password']);
 	
-		$queryActive=$db->query("SELECT active FROM Users WHERE username = '". $user ."'");
+		$queryActive=$db->query("SELECT active, admin FROM Users WHERE username = '". $user ."'");
 
 		if(password_verify($pass,$decodedHash))
 		{	
@@ -39,6 +39,12 @@ if($_POST){
 			{	
 				echo $dataYes;
 				$_SESSION['username'] = $user;
+
+				if($queryActive[0]['admin']==1)
+				{
+					$_SESSION['admin'] = $user;
+				}
+
 			}
 			else
 			{

@@ -11,7 +11,7 @@ if($_POST){
 		//echo "<pre>".print_r($_POST)."</pre>";
 	require_once ('MySQLi.php');
 
-	$db = new MysqliDb ('localhost', 'root', '', 'mydb');
+	$db = new MysqliDb ('localhost', 'root', 'azimamilancheesetopsvespa', 'mydb');
 
 	$user=$_POST['username'];
 	$pass=$_POST['password'];
@@ -60,7 +60,7 @@ if($_POST){
 		$confirm = $db->query("INSERT INTO `confirm` VALUES(NULL,'$userid','$key','$user')");
 	           
 		$mail->Body=
-			"Welcome!Thank-you for creating an account. Please confirm your account by copy and pasting the link below into your browsers address bar. http://localhost/confirm.php?email=".$user."&key=".$key." Thanks!";
+			"Welcome!Thank-you for creating an account. Please confirm your account by copy and pasting the link below into your browsers address bar. http://46.101.98.185/confirm.php?email=".$user."&key=".$key." Thanks!";
 
 
 		if(!$mail->send()) {

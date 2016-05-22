@@ -115,7 +115,7 @@ $( document ).ready(function() {
 
 function loadPosts(){
     $.ajax({
-    type: "POST",
+    type: "post",
     url: "get_posts.php",
     data:"bla",
     success: function(data){
@@ -139,17 +139,35 @@ function loadPosts(){
 
             }
              <?php if(isset($_SESSION['admin'])){
-                echo "stringToBeAppended += '<td><a href=deletePost?id='+theObject.id+' >Delete</td>';";
+                echo "stringToBeAppended += '<td><a onclick=deletePost(theObject.id) >Delete </td>';";
               } ?>
-            var closeRowString = '</tr>'
+            var closeRowString = '</tr>';
             // stringToBeAppended.concat(closeRowString);
             stringToBeAppended += closeRowString;
 
             // console.log("string: "+stringToBeAppended);
+
             $("#postsTable").find('tbody').append($(stringToBeAppended));
         }
    }
 });
+}
+
+function deletePost(postid){
+ 
+  var logData =
+            {
+              postID : postid,
+          };
+
+  $.ajax({
+    type: "post",
+    url: "deletePost.php",
+    data:logData,
+    success: function(data){
+      location.reload();
+    }
+  });
 }
 
 function post()
@@ -186,9 +204,6 @@ function post()
       var formData = new FormData (form);
      
 
-      //TO DELETE -those fields can be modified- 
-      // formData.append("ip", "<?php echo $_SERVER['REMOTE_ADDR']?>");
-      // formData.append("username", "<?php echo($_SESSION['username']);?>");
 
       $.ajax({
         type: "POST",
