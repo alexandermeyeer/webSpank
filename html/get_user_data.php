@@ -6,39 +6,52 @@ session_start();
 
 if($_POST){
 
-		//echo "<pre>".print_r($_POST)."</pre>";
+
 	require_once ('MySQLi.php');
 
-	$db = new MysqliDb ('localhost', 'root', 'azimamilancheesetopsvespa', 'mydb');
+	$db = new MysqliDb ('localhost', 'root', '', 'mydb');
 
 	$user=$_POST['username'];
 	$pass=$_POST['password'];
+	$dataYes="yes";
+	$dataNopass="nopass";
+	$dataActive="notactive";
 
 	/*$hash = password_hash($pass, PASSWORD_BCRYPT);*/
 	//$encoded = base64_encode($hash);
 
 	$queryPass=$db->query("SELECT password FROM Users WHERE username = '". $user ."'");
-	$decodedHash=base64_decode($queryPass[0]['password']);
-	$dataYes="yes";
-	$dataNo="no";
-
-
-
-	// $queryString="SELECT * FROM Users WHERE username = '". $user ."' AND password= '" . $hash . "'";
 	
-	// $queryUser=$db->query($queryString);
+	if(!($queryPass))
+	{
+		echo $dataNopass;
+	}
+	else
+	{
+		
+		$decodedHash=base64_decode($queryPass[0]['password']);
+	
+		$queryActive=$db->query("SELECT active FROM Users WHERE username = '". $user ."'");
 
 		if(password_verify($pass,$decodedHash))
-		{
-			echo $dataYes;
-			$_SESSION['username'] = $user;
+		{	
+			if($queryActive[0]['active'])
+			{	
+				echo $dataYes;
+				$_SESSION['username'] = $user;
+			}
+			else
+			{
+				echo $dataActive;
+			}
 		}
 		else
 		{
-			echo $dataNo;
+			echo $dataNopass;
 
 			
 		}
 	}
+}
 
 ?>

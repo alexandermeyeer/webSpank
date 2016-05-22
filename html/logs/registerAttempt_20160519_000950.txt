@@ -1,0 +1,10 @@
+
+ Visitor IP address: ::1
+ Browser (User Agent) Info: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36
+ Referrer:http://localhost/register.php
+ username:flavius@google.com
+ pass:Flavius77
+ pass:
+ hash:$2y$10$uVDg1w/pRQiyl7QZd1XaZ.70W4Fj2AzRH79kHJqVQPbc/MAtxKGGG
+ encoded:JDJ5JDEwJHVWRGcxdy9wUlFpeWw3UVpkMVhhWi43MFc0RmoyQXpSSDc5a0hKcVZRUGJjL01BdHhLR0dH
+ successfull:yes

@@ -10,10 +10,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema mydb
 -- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
 USE `mydb` ;
 
@@ -21,23 +17,46 @@ USE `mydb` ;
 -- Table `mydb`.`Users`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Users` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `username` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
-  `admin` INT NOT NULL,
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `admin` int(1) NOT NULL DEFAULT '0',
+  `ip` varchar(45) NOT NULL,
+  `ipxproxy` varchar(45) NOT NULL,
+  `date` varchar(45) NOT NULL,
+  `active` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
+CREATE TABLE IF NOT EXISTS `confirm` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid` varchar(128) NOT NULL DEFAULT '',
+  `key` varchar(128) NOT NULL DEFAULT '',
+  `email` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=58 ;
 
--- -----------------------------------------------------
--- Table `mydb`.`Idiots`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Idiots` (
-  `id` INT NOT NULL,
-  `idiotname` VARCHAR(45) NULL,
-  `idiotpassword` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS `Posts` (
+`id` INT( 10 ) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`username` VARCHAR( 100 ) NOT NULL ,
+`date` VARCHAR( 50 ) NOT NULL ,
+`ip` VARCHAR( 45 ) NOT NULL ,
+`post` VARCHAR (255) NOT NULL,
+`trimmed` VARCHAR (10) NOT NULL,
+`fileName` VARCHAR( 100 ) ,
+`fileSizeKB` INT( 10 ),
+`fileType` VARCHAR( 10 ),
+`wrongMimeType` VARCHAR( 50 ))
+ ENGINE = InnoDB;
+
+-- CREATE TABLE IF NOT EXISTS `Uploads` (
+-- `id` INT( 10 ) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+-- `file` VARCHAR( 100 ) NOT NULL ,
+-- `type` VARCHAR( 10 ) NOT NULL ,
+-- `size` INT NOT NULL
+-- ) ENGINE = MYISAM
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

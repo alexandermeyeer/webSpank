@@ -148,7 +148,13 @@
                     if(data=="yes")
                         window.location.href="/main.php";
                     else
-                     alert("data is not yes, data is:"+data+".here it stops");
+                           if(data=="notactive")
+                           {
+                              alert("You need to activate your email first");
+                           }
+                           else 
+                              if(data=="nopass")    
+                                 alert("Your username or password is wrong");
                 }
             });
       
